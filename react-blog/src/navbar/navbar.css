@@ -1,7 +1,8 @@
 .top{
     width: 100%;
     height: 50px;
-    background-color: yellowgreen;
+    /* background-color: yellowgreen; */
+    background-image: linear-gradient( 95.2deg, rgba(173,252,234,1) 26.8%, rgba(192,229,246,1) 64% );
     position: sticky;
     top: 0;
     display: flex;
@@ -10,10 +11,38 @@
 
 }
 .topLeft, .topRight{
-    width: 20%;
-    background-color: brown;
+    width: 25%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
-
+.topLeft{
+    font-size: 24px;
+}
+.topImg{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
 .topCenter{
-    width: 60%;
+    width: 50%;
+}
+.topList{
+    display: flex;
+    justify-content: space-evenly;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.topListItem{
+    font-weight: 500;
+    cursor: pointer;
+    font-size: 18px;
+}
+.topRight>:last-child{
+    cursor: pointer;
+    font-size: 20px;
+    margin-left: 20px;
+
 }

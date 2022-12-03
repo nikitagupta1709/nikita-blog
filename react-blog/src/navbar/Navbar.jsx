@@ -5,10 +5,10 @@ export const Navbar = () => {
   return (
     <div className="top">
       <div className="topLeft">
-        <FaFacebookSquare />
-        <FaTwitterSquare />
-        <FaPinterestSquare />
-        <FaInstagramSquare />
+        <FaFacebookSquare color="#1977f3"/>
+        <FaTwitterSquare color="#1da1f2" />
+        <FaPinterestSquare color="#b7081b" />
+        <FaInstagramSquare  color="#c4337e" />
       </div>
       <div className="topCenter">
         <ul className="topList">
@@ -21,8 +21,8 @@ export const Navbar = () => {
 
       </div>
       <div className="topRight">
-        <img src="https://avatars.githubusercontent.com/u/69791429?v=4" alt=""/>
-        <HiSearch />
+        <img className="topImg" src="https://avatars.githubusercontent.com/u/69791429?v=4" alt=""/>
+        <HiSearch  />
       </div>
     </div>
   )
