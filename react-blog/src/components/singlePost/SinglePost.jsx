@@ -10,8 +10,8 @@ export const SinglePost = () => {
             <h1 className="singlePostTitle">
                 Lorem ipsum dolor sit amet.
                 <div className="singlePostEdit">
-                    <BiEdit />
-                    <RiDeleteBinLine />
+                    <BiEdit className="singlePostIcon" />
+                    <RiDeleteBinLine className="singlePostIcon"/>
                 </div>
             </h1>
             <div className="singlePostInfo">
@@ -20,7 +20,7 @@ export const SinglePost = () => {
                 </span>
                 <span className="singlePostDate">1 hour ago</span>
             </div>
-            <p>
+            <p className='singlePostDesc'>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium 
                 similique magni iste qui tempore voluptatum dicta velit vitae rerum. 
                 Consequatur excepturi deleniti corrupti doloribus quasi distinctio aut 
