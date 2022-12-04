@@ -6,7 +6,7 @@ export const Sidebar = () => {
     <div className='sidebar'>
         <div className="sidebarItem">
             <span className="sidebarTitle">ABOUT ME </span>
-            <img className='sidebarImg' src="https://d5nunyagcicgy.cloudfront.net/external_assets/hero_examples/hair_beach_v391182663/original.jpeg" alt="" /> 
+            <img className='sidebarImg' src="https://avatars.githubusercontent.com/u/69791429?v=4" alt="" /> 
             <p> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Optio quo animi minima impedit, molestiae nisi quisquam est repellendus? Possimus modi quam facere corrupti soluta ab quisquam, at aliquam commodi minima.</p>
         </div>
         <div className="sidebarItem">
@@ -18,7 +18,6 @@ export const Sidebar = () => {
                 <li className="sidebarListItem">Sport</li>
                 <li className="sidebarListItem">Tech</li>
                 <li className="sidebarListItem">Movies</li>
-                <li className="sidebarListItem">Life</li>
             </ul>
         </div>
         <div className="sidebarItem">
