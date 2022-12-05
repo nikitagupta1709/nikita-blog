@@ -1,5 +1,8 @@
 import { Navbar } from "./components/navbar/Navbar";
-import { Settings } from "./Pages/settings/Settings";
+import { AllRoutes } from "./components/routes/AllRoutes";
+// import { Login } from "./Pages/login/Login";
+// import { Register } from "./Pages/register/Register";
+// import { Settings } from "./Pages/settings/Settings";
 // import { Home } from "./Pages/home/Home.jsx"
 // import Single from "./Pages/single/Single";
 // import { Write } from "./Pages/write/Write";
@@ -11,7 +14,10 @@ function App() {
       {/* <Home /> */}
       {/* <Single /> */}
       {/* <Write /> */}
-      <Settings />
+      {/* <Settings /> */}
+      {/* <Login /> */}
+      {/* <Register /> */}
+      <AllRoutes />
     </>
   );
 }
