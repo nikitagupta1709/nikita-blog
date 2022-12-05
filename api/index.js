@@ -26,10 +26,10 @@ app.use("/", (req, res)=>{
     console.log("HEY THIS IS ME!!")
 })
 
-app.listen(3000, ()=>{
+app.listen(5000, ()=>{
     try {
         connection();
-        console.log("Server Listening on port 3000");
+        console.log("Server Listening on port 5000");
     } catch (error) {
         console.log(error)
     }
