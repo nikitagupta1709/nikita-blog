@@ -23,10 +23,10 @@ export const Sidebar = () => {
         <div className="sidebarItem">
             <span className="sidebarTitle">FOLLOW US</span>
             <div className="sidebarSocial">
-                <FaFacebookSquare color="gray" fontSize="25px" cursor="pointer"/>
-                <FaTwitterSquare color="gray" fontSize="25px" cursor="pointer"/>
-                <FaPinterestSquare color="gray" fontSize="25px" cursor="pointer" />
-                <FaInstagramSquare  color="gray" fontSize="25px" cursor="pointer"/>
+                <FaFacebookSquare color="lightsteelblue" fontSize="25px" cursor="pointer"/>
+                <FaTwitterSquare color="lightsteelblue" fontSize="25px" cursor="pointer"/>
+                <FaPinterestSquare color="lightsteelblue" fontSize="25px" cursor="pointer" />
+                <FaInstagramSquare  color="lightsteelblue" fontSize="25px" cursor="pointer"/>
             </div>
         </div>
     </div>

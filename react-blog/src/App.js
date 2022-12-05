@@ -1,7 +1,8 @@
 import { Navbar } from "./components/navbar/Navbar";
+import { Settings } from "./Pages/settings/Settings";
 // import { Home } from "./Pages/home/Home.jsx"
 // import Single from "./Pages/single/Single";
-import { Write } from "./Pages/write/Write";
+// import { Write } from "./Pages/write/Write";
 
 function App() {
   return (
@@ -9,7 +10,8 @@ function App() {
       <Navbar />
       {/* <Home /> */}
       {/* <Single /> */}
-      <Write />
+      {/* <Write /> */}
+      <Settings />
     </>
   );
 }
