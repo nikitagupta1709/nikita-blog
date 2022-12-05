@@ -1,7 +1,9 @@
 import "./navbar.css";
 import { FaFacebookSquare, FaTwitterSquare, FaPinterestSquare, FaInstagramSquare } from 'react-icons/fa';
 import {HiSearch} from 'react-icons/hi';
+import { NavLink } from "react-router-dom";
 export const Navbar = () => {
+  const user = false;
   return (
     <div className="top">
       <div className="topLeft">
@@ -12,16 +14,40 @@ export const Navbar = () => {
       </div>
       <div className="topCenter">
         <ul className="topList">
-          <li className="topListItem">HOME</li>
-          <li className="topListItem">ABOUT</li>
-          <li className="topListItem">CONTACT</li>
-          <li className="topListItem">WRITE</li>
-          <li className="topListItem">LOGOUT</li>
+          <li className="topListItem">
+            <NavLink className="link" to="/" >HOME</NavLink>
+          </li>
+          <li className="topListItem">
+            <NavLink className="link">ABOUT</NavLink>
+          </li>
+          <li className="topListItem">
+            <NavLink className="link">CONTACT</NavLink>
+          </li>
+          <li className="topListItem">
+            <NavLink className="link" to="/write">WRITE</NavLink>
+          </li>
+          <li className="topListItem">
+            {user  && "LOGOUT"}
+            {/* <NavLink className="link">LOGOUT</NavLink> */}
+          </li>
         </ul>
 
       </div>
       <div className="topRight">
-        <img className="topImg" src="https://avatars.githubusercontent.com/u/69791429?v=4" alt=""/>
+        {
+          user ? (
+            <img className="topImg" src="https://avatars.githubusercontent.com/u/69791429?v=4" alt=""/>
+          ): (
+            <ul className="topList">
+              <li className="topListItem">
+                <NavLink className="link" to="/login">LOGIN</NavLink>
+              </li>
+              <li className="topListItem">
+                <NavLink className="link" to="/register" >REGISTER</NavLink>
+              </li>
+            </ul>
+          )
+        }
         <HiSearch  />
       </div>
     </div>
