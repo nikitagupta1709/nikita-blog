@@ -18,6 +18,7 @@ const connection = async () =>{
             useNewUrlParser : true,
             useUnifiedTopology: true,});
         console.log("Connection established");
+        
     } catch (error) {
         console.log(error)
     }
