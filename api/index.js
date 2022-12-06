@@ -1,36 +1,36 @@
-import express from 'express';
+import express from "express";
 import cors from "cors";
-import dotenv from 'dotenv';
-import mongoose from 'mongoose';
+import dotenv from 'dotenv'
+import mongoose from "mongoose"
+import authRoute from "./routes/auth.route.js"
 
 dotenv.config();
 const app = express();
 
-app.use(express.json());
+app.use(express.json()); 
 app.use(cors());
 
-let mongo_url = process.env.MONGO_URL;
-const connection = async()=>{
+let mongo_url = process.env.MONGO_URL
+
+const connection = async () =>{
     try {
-        mongoose.connect(mongo_url,{
-            useNewUrlParser: true,
-            useUnifiedTopology: true,
-        })
-        console.log("Connection established")
+        await mongoose.connect(mongo_url,{
+            useNewUrlParser : true,
+            useUnifiedTopology: true,});
+        console.log("Connection established");
     } catch (error) {
         console.log(error)
     }
 }
 
-app.use("/", (req, res)=>{
-    console.log("HEY THIS IS ME!!")
-})
+app.use("/auth", authRoute);
 
-app.listen(5000, ()=>{
-    try {
+app.listen(3050, ()=>{
+    try{
         connection();
-        console.log("Server Listening on port 5000");
-    } catch (error) {
-        console.log(error)
+        console.log("Server running on 3050");
+    }
+    catch(e){
+        console.log(e)
     }
 })
