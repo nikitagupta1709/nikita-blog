@@ -1,5 +1,6 @@
 import express from 'express';
 import userModel from "../models/users.model.js"
+import bcrypt from "bcryptjs";
 
 const router = express.Router();
 
@@ -17,11 +18,12 @@ router.post('/register',async (req, res) => {
             })
         }
         else{
+            password = bcrypt.hashSync(password);
             let newUser = await userModel.create({
-                username,email,password
+                username, email, password
             })
             newUser = newUser.toJSON();
-
+            delete newUser.password;
             return res.send(newUser)
         }
     } catch (error) {
