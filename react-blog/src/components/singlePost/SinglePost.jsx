@@ -9,10 +9,13 @@ import { Context } from '../../context/context';
 
 export const SinglePost = () => {
     const { postId } = useParams();
-    // console.log(postId);
     const [ post, setPost ] = useState({});
     const [navigate, setNavigate] = useState(false);
     const {user} = useContext(Context);
+    const [title, setTitle] = useState("");
+    const [desc, setDesc] = useState("");
+    const [updateMode, setUpdateMode] = useState(false);
+
 
     const PF = "http://localhost:3050/images/";
     useEffect ( () => {
@@ -21,16 +24,30 @@ export const SinglePost = () => {
 
     const getPost = () =>{
         axios.get(`http://localhost:3050/posts/${postId}`)
-        .then((res) =>  setPost(res.data))
+        .then((res) => {
+             setPost(res.data)
+             setTitle(res.data.title)
+             setDesc(res.data.desc)
+            })
         .catch((error) => console.log(error))
+        
     }
-    const handleClick = () =>{
+    const handleDelete = () =>{
         axios.delete(`http://localhost:3050/posts/${postId}`,{data: {username:user.username}})
         .then((res) => {
             alert(res.data.message)
             setNavigate(true)
         })
         .catch((error) => console.log(error))
+    }
+
+    const handleUpdate = () =>{
+        axios.put(`http://localhost:3050/posts/${postId}`,{username:user.username, title, desc})
+        .then((res) => {
+            alert("Your blog has been updated")
+            setNavigate(true)
+        })
+        .catch((error) => console.log(error))   
     }
 
     if(navigate){
@@ -45,15 +62,19 @@ export const SinglePost = () => {
                     <img className='singlePostImg' src={PF + post.photo} alt=""/>
                 )
             }
-            <h1 className="singlePostTitle">
-                {post.title}
-                {post.username === user?.username && (
-                    <div className="singlePostEdit">
-                        <BiEdit className="singlePostIcon" />
-                        <RiDeleteBinLine className="singlePostIcon" onClick={handleClick}/>
-                    </div>
+            {
+                updateMode ? (<input type="text" value={title} className="singlePostTitleInput" onChange={(e)=>setTitle(e.target.value)} autoFocus /> ): (
+                    <h1 className="singlePostTitle">
+                        {post.title}
+                        {post.username === user?.username && (
+                            <div className="singlePostEdit">
+                                <BiEdit className="singlePostIcon" onClick={ () => setUpdateMode(true)} />
+                                <RiDeleteBinLine className="singlePostIcon" onClick={handleDelete}/>
+                            </div>
+                        )}
+                    </h1>
                 )}
-            </h1>
+            
             <div className="singlePostInfo">
                 <span className="singlePostAuthor">
                     Author: 
@@ -61,9 +82,12 @@ export const SinglePost = () => {
                     </span>
                 <span className="singlePostDate">{new Date(post.createdAt).toDateString()}</span>
             </div>
-            <p className='singlePostDesc'>
+            {updateMode ? (<textarea className='singlePostDescInput' value={desc} onChange={(e)=>setDesc(e.target.value)}  />) :(
+                <p className='singlePostDesc'>
                 {post.desc}
             </p>
+            )}
+            <button className='singlePostButton' onClick={handleUpdate}>Update</button>
         </div>
     </div>
   )
