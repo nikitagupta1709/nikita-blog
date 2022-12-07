@@ -12,7 +12,7 @@ let initState = {
 export const Login = () => {
   const [loginuser, setUser] = useState(initState)
   const [navigate, setNavigate] = useState(false);
-  const {user,token,dispatch, isFetching} = useContext(Context);
+  const {dispatch, isFetching} = useContext(Context);
 
   const handleChange = (e)=>{
     const {name, value} = e.target;
@@ -33,9 +33,7 @@ export const Login = () => {
       dispatch({type:"LOGIN_FAILURE"});
     }
   }
-  console.log(user)
-  console.log(token)
-  localStorage.setItem("token", token);
+
   if(navigate){
     return <Navigate to="/"/>
   }
@@ -48,7 +46,7 @@ export const Login = () => {
             <input type="text" className="loginInput" name="username" value={loginuser.username} placeholder="Enter your username..." onChange={handleChange} required/>
             <label>Password</label>
             <input type="password" className="loginInput" name="password" value={loginuser.password} placeholder="Enter your password..." onChange={handleChange} required/>
-            <button type="submit" className="loginButton">Login</button>
+            <button type="submit" className="loginButton" disabled={isFetching}>Login</button>
         </form>
         <button className="loginRegisterButton">
           <NavLink to="/register" className="link">Register</NavLink>
