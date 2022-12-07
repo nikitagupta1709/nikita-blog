@@ -4,11 +4,15 @@ import { RiDeleteBinLine } from 'react-icons/ri';
 import { NavLink, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import { useContext } from 'react';
+import { Context } from '../../context/context';
 
 export const SinglePost = () => {
     const { postId } = useParams();
     // console.log(postId);
     const [ post, setPost ] = useState({});
+    const {user} = useContext(Context);
+
     const PF = "http://localhost:3050/images/";
     useEffect ( () => {
         getPost();
@@ -29,10 +33,12 @@ export const SinglePost = () => {
             }
             <h1 className="singlePostTitle">
                 {post.title}
-                <div className="singlePostEdit">
-                    <BiEdit className="singlePostIcon" />
-                    <RiDeleteBinLine className="singlePostIcon"/>
-                </div>
+                {post.username === user?.username && (
+                    <div className="singlePostEdit">
+                        <BiEdit className="singlePostIcon" />
+                        <RiDeleteBinLine className="singlePostIcon"/>
+                    </div>
+                )}
             </h1>
             <div className="singlePostInfo">
                 <span className="singlePostAuthor">
