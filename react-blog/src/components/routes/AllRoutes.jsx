@@ -7,9 +7,11 @@ import { Settings } from '../../Pages/settings/Settings'
 import { Write } from '../../Pages/write/Write'
 import   Single  from "../../Pages/single/Single"
 import { NotFound } from '../../Pages/notFound/NotFound'
+import { useContext } from 'react'
+import {Context} from "../../context/context"
 
 export const AllRoutes = () => {
-    const user = false;
+    const {user} = useContext(Context);
   return (
     <Routes>
         <Route path="/" element={<Home/>}></Route>
