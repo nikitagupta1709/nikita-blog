@@ -1,8 +1,12 @@
 import './settings.css'
 import { Sidebar } from '../../components/sidebar/Sidebar'
 import { CgProfile } from 'react-icons/cg'
+import { useContext } from 'react'
+import { Context } from '../../context/context'
 
 export const Settings = () => {
+  const {user} = useContext(Context)
+
   return (
     <div className='settings'>
       <div className="settingsWrapper"> 
@@ -13,7 +17,7 @@ export const Settings = () => {
         <form className='settingsForm'>
             <label>Profile Picture</label>
             <div className="settingsPP">
-                <img src="https://avatars.githubusercontent.com/u/69791429?v=4" alt=""/>
+                <img src={user.profilePic} alt=""/>
                 <label htmlFor="fileInput">
                     <CgProfile className='settingsPPIcon'/>
                 </label>
