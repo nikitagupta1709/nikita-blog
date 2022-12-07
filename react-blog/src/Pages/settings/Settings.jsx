@@ -6,15 +6,18 @@ import { Context } from "../../context/context";
 import axios from "axios";
 
 export const Settings = () => {
-  const {user} = useContext(Context)
+  const {user, dispatch} = useContext(Context)
   const [file, setFile] = useState(null);
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [success, setSuccess] = useState(false);
 
+  const PF = "http://localhost:3050/images/";
+
   const handleSubmit = async (e)=>{
     e.preventDefault();
+    dispatch({type: "UPDATE_START"})
     let updatesUser = {
         userId : user._id,
         username,
@@ -36,10 +39,12 @@ export const Settings = () => {
     }
 
     try {
-        await axios.put(`http://localhost:3050/users/${user._id}`, updatesUser)
+        const res = await axios.put(`http://localhost:3050/users/${user._id}`, updatesUser)
         setSuccess(true);
+        dispatch({type: "UPDATE_SUCCESS", payload: res.data})
     } catch (error) {
         console.log(error,"error")
+        dispatch({type: "UPDATE_FAILURE"})
     }
 }
 
@@ -53,7 +58,7 @@ export const Settings = () => {
         <form className="settingsForm" onSubmit={handleSubmit}>
             <label>Profile Picture</label>
             <div className="settingsPP">
-                <img  src={user.profilePic} alt="" />
+                <img  src={ file ? URL.createObjectURL(file) : PF + user.profilePic} alt="" />
                 <label htmlFor="fileInput">
                     <CgProfile className="settingsPPIcon"/>
                 </label>
@@ -68,7 +73,7 @@ export const Settings = () => {
             <button className="settingsSubmit" type="submit">Update</button>
             {
               success && (
-                <span style={{color: "green", textAlign:"center", marginTop:"20px"}}> Profile update </span>
+                <span style={{color: "green", textAlign:"center", marginTop:"20px"}}> Profile has been update successfully! </span>
               )
             }
         </form>
