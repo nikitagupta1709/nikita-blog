@@ -35,7 +35,10 @@ router.post('/register',async (req, res) => {
             })
             newUser = newUser.toJSON();
             delete newUser.password;
-            return res.send(newUser);
+            return res.send({
+                message: "User Succesfully Registred!!",
+                data: newUser
+            });
         }
     } catch (error) {
         res.status(500).send({
@@ -73,7 +76,8 @@ router.post('/login',async (req, res) => {
 
                 return res.send({
                     message:"Succesfully logged in",
-                    data : {token}
+                    data : token,
+                    user: result
                 })
 
             } else {
