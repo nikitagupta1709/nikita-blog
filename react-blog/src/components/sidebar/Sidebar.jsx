@@ -28,8 +28,8 @@ export const Sidebar = () => {
             <span className="sidebarTitle">CATEGORIES </span>
             <ul className="sidebarList">
                 {category.map((cat) => (
-                    <NavLink to={`/?cat=${cat.name}`} className="link">
-                        <li key={cat._id} className="sidebarListItem">{cat.name}</li>
+                    <NavLink key={cat._id} to={`/?cat=${cat.name}`} className="link">
+                        <li  className="sidebarListItem">{cat.name}</li>
                     </NavLink>
                 ))}
             </ul>
