@@ -1,14 +1,34 @@
 import './singlePost.css'
 import { BiEdit } from 'react-icons/bi';
 import { RiDeleteBinLine } from 'react-icons/ri';
+import { NavLink, useParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 
 export const SinglePost = () => {
+    const { postId } = useParams();
+    // console.log(postId);
+    const [ post, setPost ] = useState({});
+
+    useEffect ( () => {
+        getPost();
+    },[])
+
+    const getPost = () =>{
+        axios.get(`http://localhost:3050/posts/${postId}`)
+        .then((res) =>  setPost(res.data))
+    }
+
   return (
     <div className='singlePost'>
         <div className="singlePostWrapper">
-            <img className='singlePostImg' src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg" alt=""/>
+            {
+                post.photo && (
+                    <img className='singlePostImg' src={post.photo} alt=""/>
+                )
+            }
             <h1 className="singlePostTitle">
-                Lorem ipsum dolor sit amet.
+                {post.title}
                 <div className="singlePostEdit">
                     <BiEdit className="singlePostIcon" />
                     <RiDeleteBinLine className="singlePostIcon"/>
@@ -16,35 +36,13 @@ export const SinglePost = () => {
             </h1>
             <div className="singlePostInfo">
                 <span className="singlePostAuthor">
-                    Author: <b>Nikita</b>
-                </span>
-                <span className="singlePostDate">1 hour ago</span>
+                    Author: 
+                    <NavLink to={`/?user=${post.username}`} className="link" > <b>{post.username}</b></NavLink>
+                    </span>
+                <span className="singlePostDate">{new Date(post.createdAt).toDateString()}</span>
             </div>
             <p className='singlePostDesc'>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium 
-                similique magni iste qui tempore voluptatum dicta velit vitae rerum. 
-                Consequatur excepturi deleniti corrupti doloribus quasi distinctio aut 
-                veritatis neque sed.
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium 
-                similique magni iste qui tempore voluptatum dicta velit vitae rerum. 
-                Consequatur excepturi deleniti corrupti doloribus quasi distinctio aut 
-                veritatis neque sed.
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium 
-                similique magni iste qui tempore voluptatum dicta velit vitae rerum. 
-                Consequatur excepturi deleniti corrupti doloribus quasi distinctio aut 
-                veritatis neque sed.
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium 
-                similique magni iste qui tempore voluptatum dicta velit vitae rerum. 
-                Consequatur excepturi deleniti corrupti doloribus quasi distinctio aut 
-                veritatis neque sed.
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium 
-                similique magni iste qui tempore voluptatum dicta velit vitae rerum. 
-                Consequatur excepturi deleniti corrupti doloribus quasi distinctio aut 
-                veritatis neque sed.
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium 
-                similique magni iste qui tempore voluptatum dicta velit vitae rerum. 
-                Consequatur excepturi deleniti corrupti doloribus quasi distinctio aut 
-                veritatis neque sed.
+                {post.desc}
             </p>
         </div>
     </div>

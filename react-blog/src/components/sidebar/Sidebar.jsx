@@ -1,7 +1,22 @@
 import './sidebar.css'
 import { FaFacebookSquare, FaTwitterSquare, FaPinterestSquare, FaInstagramSquare } from 'react-icons/fa';
+import { useState } from 'react';
+import { useEffect } from 'react';
+import axios from 'axios';
+import { NavLink } from 'react-router-dom';
 
 export const Sidebar = () => {
+    const [ category, setCategory ] = useState([]);
+
+    useEffect( () => {
+        getCategories();
+    }, [])
+
+    const getCategories = () => {
+        axios.get(`http://localhost:3050/categories`)
+        .then((res) => setCategory(res.data.data));
+    }
+    // console.log(category)
   return (
     <div className='sidebar'>
         <div className="sidebarItem">
@@ -12,12 +27,11 @@ export const Sidebar = () => {
         <div className="sidebarItem">
             <span className="sidebarTitle">CATEGORIES </span>
             <ul className="sidebarList">
-                <li className="sidebarListItem">Life</li>
-                <li className="sidebarListItem">Music</li>
-                <li className="sidebarListItem">Style</li>
-                <li className="sidebarListItem">Sport</li>
-                <li className="sidebarListItem">Tech</li>
-                <li className="sidebarListItem">Movies</li>
+                {category.map((cat) => (
+                    <NavLink to={`/?cat=${cat.name}`} className="link">
+                        <li key={cat._id} className="sidebarListItem">{cat.name}</li>
+                    </NavLink>
+                ))}
             </ul>
         </div>
         <div className="sidebarItem">
