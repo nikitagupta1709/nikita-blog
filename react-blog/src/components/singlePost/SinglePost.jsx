@@ -36,7 +36,7 @@ export const SinglePost = () => {
         axios.delete(`http://localhost:3050/posts/${postId}`,{data: {username:user.username}})
         .then((res) => {
             alert(res.data.message)
-            setNavigate(true)
+            setNavigate(true)  
         })
         .catch((error) => console.log(error))
     }
@@ -45,7 +45,8 @@ export const SinglePost = () => {
         axios.put(`http://localhost:3050/posts/${postId}`,{username:user.username, title, desc})
         .then((res) => {
             alert("Your blog has been updated")
-            setNavigate(true)
+            // setNavigate(true)
+            setUpdateMode(false)
         })
         .catch((error) => console.log(error))   
     }
@@ -65,7 +66,7 @@ export const SinglePost = () => {
             {
                 updateMode ? (<input type="text" value={title} className="singlePostTitleInput" onChange={(e)=>setTitle(e.target.value)} autoFocus /> ): (
                     <h1 className="singlePostTitle">
-                        {post.title}
+                        {title}
                         {post.username === user?.username && (
                             <div className="singlePostEdit">
                                 <BiEdit className="singlePostIcon" onClick={ () => setUpdateMode(true)} />
@@ -84,10 +85,14 @@ export const SinglePost = () => {
             </div>
             {updateMode ? (<textarea className='singlePostDescInput' value={desc} onChange={(e)=>setDesc(e.target.value)}  />) :(
                 <p className='singlePostDesc'>
-                {post.desc}
+                {desc}
             </p>
             )}
-            <button className='singlePostButton' onClick={handleUpdate}>Update</button>
+            {
+                updateMode && (
+                    <button className='singlePostButton' onClick={handleUpdate}>Update</button>
+                )
+            }
         </div>
     </div>
   )
