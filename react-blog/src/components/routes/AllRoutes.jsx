@@ -4,8 +4,8 @@ import { Home } from '../../Pages/home/Home'
 import { Login } from '../../Pages/login/Login'
 import { Register } from '../../Pages/register/Register'
 import { Settings } from '../../Pages/settings/Settings'
-import { Write } from '../../Pages/write/Write'
-import   Single  from "../../Pages/single/Single"
+import Write from '../../Pages/write/Write'
+import Single from "../../Pages/single/Single"
 import { NotFound } from '../../Pages/notFound/NotFound'
 import { useContext } from 'react'
 import {Context} from "../../context/context"

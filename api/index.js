@@ -7,12 +7,16 @@ import usersRoute from  "./routes/users.route.js"
 import postRoute from "./routes/posts.route.js"
 import categoriesRoute from "./routes/categories.route.js"
 import multer from "multer"
+import path from "path"
+// import { dirname } from 'path';
 
+const __dirname = path.resolve();
 dotenv.config();
 const app = express();
 
 app.use(express.json()); 
 app.use(cors());
+app.use('/images', express.static(path.join(__dirname,'/images')))
 
 let mongo_url = process.env.MONGO_URL
 

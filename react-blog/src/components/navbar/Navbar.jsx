@@ -43,7 +43,7 @@ export const Navbar = () => {
       <div className="topRight">
         {
           user ? (
-            <img className="topImg" src="https://avatars.githubusercontent.com/u/69791429?v=4" alt=""/>
+            <img className="topImg" src={user.profilePic} alt=""/>
           ): (
             <ul className="topList">
               <li className="topListItem">

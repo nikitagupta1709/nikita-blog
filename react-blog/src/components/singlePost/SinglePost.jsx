@@ -9,7 +9,7 @@ export const SinglePost = () => {
     const { postId } = useParams();
     // console.log(postId);
     const [ post, setPost ] = useState({});
-
+    const PF = "http://localhost:3050/images/";
     useEffect ( () => {
         getPost();
     },[])
@@ -24,7 +24,7 @@ export const SinglePost = () => {
         <div className="singlePostWrapper">
             {
                 post.photo && (
-                    <img className='singlePostImg' src={post.photo} alt=""/>
+                    <img className='singlePostImg' src={PF + post.photo} alt=""/>
                 )
             }
             <h1 className="singlePostTitle">
