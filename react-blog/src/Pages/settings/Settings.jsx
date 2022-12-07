@@ -41,6 +41,7 @@ export const Settings = () => {
     try {
         const res = await axios.put(`http://localhost:3050/users/${user._id}`, updatesUser)
         setSuccess(true);
+        alert("Profile Updated, Login again to view changes")
         dispatch({type: "UPDATE_SUCCESS", payload: res.data})
     } catch (error) {
         console.log(error,"error")
@@ -53,7 +54,6 @@ export const Settings = () => {
       <div className="settingsWrapper">
         <div className="settingsTitle">
             <span className="settingsUpdateTitle">Update Your Account</span>
-            <span className="settingsDeleteTitle">Delete Account</span>
         </div>
         <form className="settingsForm" onSubmit={handleSubmit}>
             <label>Profile Picture</label>
