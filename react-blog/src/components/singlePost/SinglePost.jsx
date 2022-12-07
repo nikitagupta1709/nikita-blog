@@ -1,7 +1,7 @@
 import './singlePost.css'
 import { BiEdit } from 'react-icons/bi';
 import { RiDeleteBinLine } from 'react-icons/ri';
-import { NavLink, useParams } from 'react-router-dom';
+import { Navigate, NavLink, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useContext } from 'react';
@@ -11,6 +11,7 @@ export const SinglePost = () => {
     const { postId } = useParams();
     // console.log(postId);
     const [ post, setPost ] = useState({});
+    const [navigate, setNavigate] = useState(false);
     const {user} = useContext(Context);
 
     const PF = "http://localhost:3050/images/";
@@ -21,6 +22,19 @@ export const SinglePost = () => {
     const getPost = () =>{
         axios.get(`http://localhost:3050/posts/${postId}`)
         .then((res) =>  setPost(res.data))
+        .catch((error) => console.log(error))
+    }
+    const handleClick = () =>{
+        axios.delete(`http://localhost:3050/posts/${postId}`,{data: {username:user.username}})
+        .then((res) => {
+            alert(res.data.message)
+            setNavigate(true)
+        })
+        .catch((error) => console.log(error))
+    }
+
+    if(navigate){
+        return <Navigate to="/"/>
     }
 
   return (
@@ -36,7 +50,7 @@ export const SinglePost = () => {
                 {post.username === user?.username && (
                     <div className="singlePostEdit">
                         <BiEdit className="singlePostIcon" />
-                        <RiDeleteBinLine className="singlePostIcon"/>
+                        <RiDeleteBinLine className="singlePostIcon" onClick={handleClick}/>
                     </div>
                 )}
             </h1>
