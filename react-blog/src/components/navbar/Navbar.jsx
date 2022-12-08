@@ -1,6 +1,6 @@
 import "./navbar.css";
 import { FaFacebookSquare, FaTwitterSquare, FaPinterestSquare, FaInstagramSquare } from 'react-icons/fa';
-import {HiSearch} from 'react-icons/hi';
+import {BiUserCircle} from 'react-icons/bi'
 import { NavLink } from "react-router-dom";
 import {Context} from "../../context/context"
 import { useContext } from "react";
@@ -46,7 +46,8 @@ export const Navbar = () => {
         {
           user ? (
             <NavLink to="/settings">
-              <img className="topImg" src={ PF + user.profilePic} alt=""/>
+              {user.profilePic ? <img className="topImg" src={ PF + user.profilePic} alt=""/> : <BiUserCircle /> }
+              
             </NavLink>
           ): (
             <ul className="topList">
@@ -59,7 +60,6 @@ export const Navbar = () => {
             </ul>
           )
         }
-        <HiSearch  />
       </div>
     </div>
   )
