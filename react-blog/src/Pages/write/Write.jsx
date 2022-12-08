@@ -44,14 +44,14 @@ export default function Write() {
             data.append("file",file);
             newPost.photo = filename;
             try{
-                await axios.post("http://localhost:3050/upload", data)
+                await axios.post("https://viniya-blog.onrender.com/upload", data)
             } catch(err) {
                 console.log(err,"err")
             }
         }
 
         try {
-            await axios.post("http://localhost:3050/posts", newPost)
+            await axios.post("https://viniya-blog.onrender.com/posts", newPost)
             
             showToastSuccessMessage("Blog posted succesfully!!")
         } catch (error) {

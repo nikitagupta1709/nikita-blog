@@ -15,7 +15,7 @@ export const Settings = () => {
   const [password, setPassword] = useState("");
   const [success, setSuccess] = useState(false);
 
-  const PF = "http://localhost:3050/images/";
+  const PF = "https://viniya-blog.onrender.com/images/";
 
   const showToastSuccessMessage = (msg) => {
     toast.success(msg, {
@@ -39,7 +39,7 @@ export const Settings = () => {
         data.append("file",file);
         updatesUser.profilePic = filename;
         try{
-            await axios.post("http://localhost:3050/upload", data)
+            await axios.post("https://viniya-blog.onrender.com/upload", data)
             
         } catch(err) {
             console.log(err,"err")
@@ -47,7 +47,7 @@ export const Settings = () => {
     }
 
     try {
-        const res = await axios.put(`http://localhost:3050/users/${user._id}`, updatesUser)
+        const res = await axios.put(`https://viniya-blog.onrender.com/users/${user._id}`, updatesUser)
         setSuccess(true);
         // alert("Profile Updated, Login again to view changes")
         dispatch({type: "UPDATE_SUCCESS", payload: res.data})

@@ -13,7 +13,7 @@ export const Sidebar = () => {
     }, [])
 
     const getCategories = () => {
-        axios.get(`http://localhost:3050/categories`)
+        axios.get(`https://viniya-blog.onrender.com/categories`)
         .then((res) => setCategory(res.data.data));
     }
     // console.log(category)
@@ -21,7 +21,7 @@ export const Sidebar = () => {
     <div className='sidebar'>
         <div className="sidebarItem">
             <span className="sidebarTitle">ABOUT ME </span>
-            <img className='sidebarImg' src="https://avatars.githubusercontent.com/u/69791429?v=4" alt="" /> 
+            <img className='sidebarImg' src="https://mymodernmet.com/wp/wp-content/uploads/2019/07/will-burrard-lucas-beetlecam-23-1024x683.jpg" alt="" /> 
             <p> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Optio quo animi minima impedit, molestiae nisi quisquam est repellendus? Possimus modi quam facere corrupti soluta ab quisquam, at aliquam commodi minima.</p>
         </div>
         <div className="sidebarItem">

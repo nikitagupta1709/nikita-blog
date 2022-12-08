@@ -35,7 +35,7 @@ export const Login = () => {
     e.preventDefault()
     dispatch({type:"LOGIN_START"})
     try {
-      const res = await axios.post("http://localhost:3050/auth/login", loginuser);
+      const res = await axios.post("https://viniya-blog.onrender.com/auth/login", loginuser);
       dispatch({type:"LOGIN_SUCCESS", payload: res.data});
       setNavigate(true);
       showToastSuccessMessage(res.data.message)

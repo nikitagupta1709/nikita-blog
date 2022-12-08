@@ -13,7 +13,7 @@ export const SinglePost = () => {
     const {postId} = useParams();
     const [post, setPost] = useState({});
     const [navigate, setNavigate] = useState(false)
-    const PF = "http://localhost:3050/images/";
+    const PF = "https://viniya-blog.onrender.com/images/";
     const {user} = useContext(Context)
     const [title, setTitle] = useState("");
     const [desc, setDesc] = useState("");
@@ -37,7 +37,7 @@ export const SinglePost = () => {
     };
 
     const getPost = ()=>{
-        axios.get(`http://localhost:3050/posts/${postId}`)
+        axios.get(`https://nikita-blogs.onrender.com/posts/${postId}`)
         .then((response)=>{
             setPost(response.data)
             setTitle(response.data.title)
@@ -47,7 +47,7 @@ export const SinglePost = () => {
     }
 
     const handleDelete = ()=>{
-        axios.delete(`http://localhost:3050/posts/${postId}`, {data: {username:user.username}})
+        axios.delete(`https://nikita-blogs.onrender.com/posts/${postId}`, {data: {username:user.username}})
         .then((response)=>{
             // alert(response.data.message)
             showToastDeleteMessage("Post has been deleted successfully!")
@@ -57,7 +57,7 @@ export const SinglePost = () => {
     }
 
     const handleUpdate = ()=>{
-        axios.put(`http://localhost:3050/posts/${postId}`, {username:user.username, title, desc})
+        axios.put(`https://nikita-blogs.onrender.com/posts/${postId}`, {username:user.username, title, desc})
         .then((response)=>{
             showToastSuccessMessage("Your blog has been updated!")
             setUpdateMode(false)
