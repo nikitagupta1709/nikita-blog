@@ -20,9 +20,14 @@ export const Sidebar = () => {
   return (
     <div className='sidebar'>
         <div className="sidebarItem">
-            <span className="sidebarTitle">ABOUT ME </span>
-            <img className='sidebarImg' src="https://mymodernmet.com/wp/wp-content/uploads/2019/07/will-burrard-lucas-beetlecam-23-1024x683.jpg" alt="" /> 
-            <p> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Optio quo animi minima impedit, molestiae nisi quisquam est repellendus? Possimus modi quam facere corrupti soluta ab quisquam, at aliquam commodi minima.</p>
+            <span className="sidebarTitle">BLOG HISTORY</span>
+            <img className='sidebarImg' src="https://media.istockphoto.com/id/1331943301/photo/blog-light-bulb-sign.jpg?s=170667a&w=0&k=20&c=EIKOZ_tAGxc48Y8OvJkWtgVEUWEtrMt-7Mb9vL_cowY=" alt="" /> 
+            <p>
+                When blogging started, the first blogs were really glorified online journals, 
+                and in all likelihood, becoming a professional blogger and making money online wasn't the goal. 
+                Since then, the blogosphere has evolved, and now people blog for many different reasons. 
+                There are even distinctions among types of blogs - business, lifestyle, fashion, food, and entertainment blogs, among others.
+            </p>
         </div>
         <div className="sidebarItem">
             <span className="sidebarTitle">CATEGORIES </span>

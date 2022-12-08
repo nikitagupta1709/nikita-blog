@@ -10,7 +10,7 @@ const Post = ({post}) => {
             <img className='postImg' src={PF + post.photo} alt =""/>
         )}
         <div className="postInfo">
-            <div className="postCats">
+            <div className="postCat">
 
                 {post.categories.map((c) => (
                     <span key={c} className="postCat">{c}</span>
@@ -23,7 +23,7 @@ const Post = ({post}) => {
             <hr />
             <span className="postDate"> {new Date(post.createdAt).toDateString()}</span>
         </div>
-        <p className='postDec'>{post.desc}</p>
+        <p className='postDesc'>{post.desc}</p>
     </div>
   )
 }

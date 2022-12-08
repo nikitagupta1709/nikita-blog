@@ -37,7 +37,7 @@ export const SinglePost = () => {
     };
 
     const getPost = ()=>{
-        axios.get(`https://nikita-blogs.onrender.com/posts/${postId}`)
+        axios.get(`https://viniya-blog.onrender.com/posts/${postId}`)
         .then((response)=>{
             setPost(response.data)
             setTitle(response.data.title)
@@ -47,7 +47,7 @@ export const SinglePost = () => {
     }
 
     const handleDelete = ()=>{
-        axios.delete(`https://nikita-blogs.onrender.com/posts/${postId}`, {data: {username:user.username}})
+        axios.delete(`https://viniya-blog.onrender.com/posts/${postId}`, {data: {username:user.username}})
         .then((response)=>{
             // alert(response.data.message)
             showToastDeleteMessage("Post has been deleted successfully!")
@@ -57,7 +57,7 @@ export const SinglePost = () => {
     }
 
     const handleUpdate = ()=>{
-        axios.put(`https://nikita-blogs.onrender.com/posts/${postId}`, {username:user.username, title, desc})
+        axios.put(`https://viniya-blog.onrender.com/posts/${postId}`, {username:user.username, title, desc})
         .then((response)=>{
             showToastSuccessMessage("Your blog has been updated!")
             setUpdateMode(false)
