@@ -4,6 +4,8 @@ import {BiUserCircle} from 'react-icons/bi'
 import { NavLink } from "react-router-dom";
 import {Context} from "../../context/context"
 import { useContext } from "react";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 export const Navbar = () => {
@@ -11,8 +13,15 @@ export const Navbar = () => {
 
   const PF = "http://localhost:3050/images/";
 
+  const showToastSuccessMessage = (msg) => {
+    toast.success(msg, {
+        position: toast.POSITION.TOP_CENTER
+    });
+  };
+
   const handleLogout = () => {
     dispatch({type: "LOGOUT"})
+    showToastSuccessMessage("Logged Out, SEE YOU SOON!! ")
   }
   return (
     <div className="top">
@@ -61,6 +70,7 @@ export const Navbar = () => {
           )
         }
       </div>
+      <ToastContainer />
     </div>
   )
 }
