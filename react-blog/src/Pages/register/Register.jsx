@@ -38,8 +38,8 @@ export const Register = () => {
       axios.post("http://localhost:3050/auth/register",user)  
       .then(response =>{
           setUser(response.data.data)
-          showToastSuccessMessage(response.data.message)
           setUser(initState)
+          showToastSuccessMessage(response.data.message)
       })
       .catch(err => {
         console.log(err.response.data.message,"in register")

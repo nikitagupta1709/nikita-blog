@@ -4,6 +4,8 @@ import { CgProfile } from 'react-icons/cg';
 import { useContext, useState } from "react";
 import { Context } from "../../context/context";
 import axios from "axios";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export const Settings = () => {
   const {user, dispatch} = useContext(Context)
@@ -14,6 +16,12 @@ export const Settings = () => {
   const [success, setSuccess] = useState(false);
 
   const PF = "http://localhost:3050/images/";
+
+  const showToastSuccessMessage = (msg) => {
+    toast.success(msg, {
+        position: toast.POSITION.TOP_CENTER
+    });
+};
 
   const handleSubmit = async (e)=>{
     e.preventDefault();
@@ -41,9 +49,11 @@ export const Settings = () => {
     try {
         const res = await axios.put(`http://localhost:3050/users/${user._id}`, updatesUser)
         setSuccess(true);
-        alert("Profile Updated, Login again to view changes")
+        // alert("Profile Updated, Login again to view changes")
         dispatch({type: "UPDATE_SUCCESS", payload: res.data})
-    } catch (error) {
+        showToastSuccessMessage("Profile Updated, Login again to view changes")
+    } 
+    catch (error) {
         console.log(error,"error")
         dispatch({type: "UPDATE_FAILURE"})
     }
@@ -80,6 +90,7 @@ export const Settings = () => {
         </form>
       </div>
       <Sidebar />
+      <ToastContainer />
     </div>
   )
 }

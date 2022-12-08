@@ -24,7 +24,6 @@ export const Login = () => {
       toast.success(msg, {
           position: toast.POSITION.TOP_CENTER
       });
-      // setNavigate(true)
   };
 
   const showToastErrorMessage = (msg) => {
@@ -34,13 +33,12 @@ export const Login = () => {
     }
   const handleSubmit = async (e)=>{
     e.preventDefault()
-
     dispatch({type:"LOGIN_START"})
     try {
       const res = await axios.post("http://localhost:3050/auth/login", loginuser);
-      dispatch({type:"LOGIN_SUCCESS", payload:res.data});
-      showToastSuccessMessage(res.data.message)
+      dispatch({type:"LOGIN_SUCCESS", payload: res.data});
       setNavigate(true);
+      showToastSuccessMessage(res.data.message)
     } 
     catch (error) {
       console.log(error)
