@@ -1,6 +1,7 @@
 # BLOG APP
 
-I am student of Full stack web development batch which is one of the famous course offered by institute Masai School Banglore. I completed our project within 4 days.
+About
+It is a blogging website where user can add, delete, view, and update the blog
 
 # FUNCTIONALITIES
 
